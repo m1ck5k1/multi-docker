@@ -15,9 +15,9 @@ after_success:
   - docker build -t m1ck5k1/multi-server ./server
   - docker build -t m1ck5k1/multi-worker ./worker
   # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" docker.io --password-stdin
   # Take these images and push them to docker hub
-  - docker push m1ck5k1/multi-client
-  - docker push m1ck5k1/multi-nginx
-  - docker push m1ck5k1/multi-server
-  - docker push m1ck5k1/multi-worker
+  - docker push m1ck5k1/multi-client:latest
+  - docker push m1ck5k1/multi-nginx:latest
+  - docker push m1ck5k1/multi-server:latest
+  - docker push m1ck5k1/multi-worker:latest
