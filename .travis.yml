@@ -1,5 +1,5 @@
 language: generic
-sudo: required
+
 services:
   - docker
 
@@ -10,14 +10,14 @@ script:
   - docker run -e CI=true m1ck5k1/react-test npm test
 
 after_success:
-  - docker build -t m1ck5k1/multi-client:latest ./client
-  - docker build -t m1ck5k1/multi-nginx:latest ./nginx
-  - docker build -t m1ck5k1/multi-server:latest ./server
-  - docker build -t m1ck5k1/multi-worker:latest ./worker
+  - docker build -t m1ck5k1/multi-client ./client
+  - docker build -t m1ck5k1/multi-nginx ./nginx
+  - docker build -t m1ck5k1/multi-server ./server
+  - docker build -t m1ck5k1/multi-worker ./worker
   # Log in to the docker CLI (Special Chars require '\' before them)
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # Take these images and push them to docker hub
-  - docker push m1ck5k1/multi-client:latest
-  - docker push m1ck5k1/multi-nginx:latest
-  - docker push m1ck5k1/multi-server:latest
-  - docker push m1ck5k1/multi-worker:latest
+  - docker push m1ck5k1/multi-client
+  - docker push m1ck5k1/multi-nginx
+  - docker push m1ck5k1/multi-server
+  - docker push m1ck5k1/multi-worker
