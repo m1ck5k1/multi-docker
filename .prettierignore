@@ -1,0 +1,8 @@
+# Created: 09/08/21
+# Updated: 13/08/21
+#
+# First attempt at creating a .prettierignore config file. The aim  is to block
+# the formatting rules for *.md files on a per-project basis.
+
+# Ignore all .md files
+*.md
